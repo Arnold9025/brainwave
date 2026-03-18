@@ -1,0 +1,14 @@
+**/.bin
+**/.obj
+**/bin
+**/obj
+**/publish
+.git
+.vs
+.vscode
+docker-compose.yml
+Dockerfile
+.dockerignore
+node_modules
+*.swp
+*.log

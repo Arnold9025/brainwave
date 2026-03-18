@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Tutoriel BrainWave Planner (Détaillé)
 
-## Getting Started
+Ce guide est conçu pour vous aider à naviguer dans le projet **BrainWave Planner** et comprendre le rôle de chaque fichier important.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🏗️ 1. Architecture Globale (Clean Architecture)
+
+Le projet suit les principes de la **Clean Architecture**. L'idée est de séparer les règles métier (le "quoi") de la technique (le "comment").
+
+```mermaid
+graph TD
+    API[BrainWave.Api] --> App[BrainWave.Application]
+    App --> Domain[BrainWave.Domain]
+    Infra[BrainWave.Infrastructure] --> App
+    Infra --> Domain
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 2. Guide des Fichiers par Couche
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🟢 BrainWave.Domain (Le Cœur)
+C'est ici que résident les règles fondamentales. Ce projet ne dépend de rien d'autre.
+*   **`Common/Entity.cs`** : La classe de base pour tous nos objets (ID unique, dates de création).
+*   **`Entities/User.cs`** : Représente un utilisateur et son score de productivité.
+*   **`Entities/TaskItem.cs`** : Une tâche concrète (titre, priorité, statut).
+*   **`Entities/Objective.cs`** : Un objectif de haut niveau qui peut contenir plusieurs tâches.
 
-## Learn More
+### 🔵 BrainWave.Application (Le Cerveau)
+Contient la logique de l'application (CQRS). C'est le "chef d'orchestre".
+*   **`Common/Interfaces/IBrainWaveDbContext.cs`** : Un contrat qui définit ce que la base de données doit savoir faire, sans dire *comment* elle le fait.
+*   **`Features/Tasks/Commands/CreateTask/`** :
+    *   `CreateTaskCommand.cs` : Les données nécessaires pour créer une tâche.
+    *   `CreateTaskCommandHandler.cs` : **Le fichier le plus important.** Il contient la logique (Vérifier l'utilisateur, créer la tâche, enregistrer).
+*   **`Features/Scoring/`** : Contient les algorithmes de calcul du score de productivité.
 
-To learn more about Next.js, take a look at the following resources:
+### 🟡 BrainWave.Infrastructure (Les Outils)
+Gère les détails techniques comme la base de données.
+*   **`Persistence/BrainWaveDbContext.cs`** : L'implémentation réelle de la base de données avec Entity Framework Core.
+*   **`Persistence/Migrations/`** : Historique des changements de la base de données (généré automatiquement).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🔴 BrainWave.Api (La Porte d'Entrée)
+Expose les services au monde extérieur (Web).
+*   **`Program.cs`** : Le point de démarrage. Configure Scalar, la base de données et les redirections.
+*   **`Controllers/TasksController.cs`** : Définit les URLs pour gérer les tâches (ex: `POST /api/Tasks`).
+*   **`appsettings.json`** : Contient la "Connection String" pour se connecter à PostgreSQL.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 3. Commandes Utiles
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Commande | Utilité |
+| :--- | :--- |
+| `dotnet build` | Vérifie que le code n'a pas d'erreurs. |
+| `dotnet run --project src/BrainWave.Api` | Lance le serveur. |
+| `docker-compose up -d` | Démarre la base de données PostgreSQL. |
+| `dotnet ef database update` | Met à jour le schéma de la base de données. |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔍 4. Tester avec l'interface Scalar
+
+1.  Lancez le projet.
+2.  Allez sur [http://localhost:5200/scalar/v1](http://localhost:5200/scalar/v1).
+3.  Utilisez les JSON d'exemples fournis dans l'interface pour créer des tâches et voir votre score de productivité évoluer !
+
+---
+
+## 🚀 5. Déploiement (Mise en ligne)
+
+Le projet est prêt à être déployé sur des plateformes comme **Render**, **Railway** ou **Koyeb**.
+
+### A. Docker
+Un `Dockerfile` est présent à la racine. Pour construire l'image localement :
+```bash
+docker build -t brainwave-api .
+```
+
+### B. Configuration Base de Données
+En production, l'application appliquera **automatiquement** les migrations au démarrage. Vous devez simplement fournir la chaîne de connexion via une variable d'environnement :
+*   **Variable** : `ConnectionStrings__DefaultConnection`
+*   **Valeur** : `Host=votreSql;Database=db;Username=user;Password=pass`
+
+### C. Étapes de déploiement (ex: Render)
+1. Créez un nouveau **Web Service** sur Render.
+2. Connectez votre dépôt GitHub.
+3. Choisissez **Docker** comme environnement.
+4. Ajoutez la variable d'environnement `ConnectionStrings__DefaultConnection`.
+5. Validez ! Votre API sera en ligne en quelques minutes.
+
+---
+
+*Note : Pour toute modification du code, n'oubliez pas de redémarrer le serveur avec `dotnet run`.*

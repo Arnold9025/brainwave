@@ -1,0 +1,6 @@
+{
+  "BrainWave.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/arnoldadadjisso\/Desktop\/brainwave\/src\/BrainWave.Api",
+  "BrainWave.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/arnoldadadjisso\/Desktop\/brainwave\/src\/BrainWave.Application",
+  "BrainWave.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/arnoldadadjisso\/Desktop\/brainwave\/src\/BrainWave.Domain",
+  "BrainWave.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/arnoldadadjisso\/Desktop\/brainwave\/src\/BrainWave.Infrastructure"
+}

@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BrainWave.Api/BrainWave.Api.csproj" />
+    <Project Path="src/BrainWave.Application/BrainWave.Application.csproj" />
+    <Project Path="src/BrainWave.Domain/BrainWave.Domain.csproj" />
+    <Project Path="src/BrainWave.Infrastructure/BrainWave.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/BrainWave.Api.IntegrationTests/BrainWave.Api.IntegrationTests.csproj" />
+    <Project Path="tests/BrainWave.Application.UnitTests/BrainWave.Application.UnitTests.csproj" />
+  </Folder>
+</Solution>

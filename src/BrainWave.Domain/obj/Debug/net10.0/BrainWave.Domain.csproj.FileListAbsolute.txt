@@ -1,0 +1,11 @@
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/bin/Debug/net10.0/BrainWave.Domain.deps.json
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/bin/Debug/net10.0/BrainWave.Domain.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/bin/Debug/net10.0/BrainWave.Domain.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.AssemblyInfoInputs.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.AssemblyInfo.cs
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.csproj.CoreCompileInputs.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/refint/BrainWave.Domain.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/ref/BrainWave.Domain.dll

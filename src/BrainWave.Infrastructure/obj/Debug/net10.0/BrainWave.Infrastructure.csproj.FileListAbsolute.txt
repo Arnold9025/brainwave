@@ -1,0 +1,17 @@
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/bin/Debug/net10.0/BrainWave.Infrastructure.deps.json
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/bin/Debug/net10.0/BrainWave.Infrastructure.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/bin/Debug/net10.0/BrainWave.Infrastructure.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/bin/Debug/net10.0/BrainWave.Application.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/bin/Debug/net10.0/BrainWave.Domain.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/bin/Debug/net10.0/BrainWave.Application.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/bin/Debug/net10.0/BrainWave.Domain.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.csproj.AssemblyReference.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.AssemblyInfoInputs.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.AssemblyInfo.cs
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWav.73D58BC0.Up2Date
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/refint/BrainWave.Infrastructure.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/ref/BrainWave.Infrastructure.dll

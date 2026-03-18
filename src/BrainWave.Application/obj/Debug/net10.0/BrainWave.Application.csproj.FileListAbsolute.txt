@@ -1,0 +1,15 @@
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/bin/Debug/net10.0/BrainWave.Application.deps.json
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/bin/Debug/net10.0/BrainWave.Application.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/bin/Debug/net10.0/BrainWave.Application.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/bin/Debug/net10.0/BrainWave.Domain.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/bin/Debug/net10.0/BrainWave.Domain.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.csproj.AssemblyReference.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.AssemblyInfoInputs.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.AssemblyInfo.cs
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.csproj.CoreCompileInputs.cache
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWav.5258BC03.Up2Date
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/refint/BrainWave.Application.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.pdb
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/ref/BrainWave.Application.dll
