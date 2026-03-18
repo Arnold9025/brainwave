@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "gyqf8bkCV8c=",
+  "dgSpecHash": "vJT40UGe4Lg=",
   "success": true,
   "projectFilePath": "/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/BrainWave.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "/Users/arnoldadadjisso/.nuget/packages/bcrypt.net-next/4.1.0/bcrypt.net-next.4.1.0.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.1/fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/mediatr/14.1.0/mediatr.14.1.0.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/10.0.5/microsoft.aspnetcore.authentication.jwtbearer.10.0.5.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/microsoft.entityframeworkcore/10.0.5/microsoft.entityframeworkcore.10.0.5.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.5/microsoft.entityframeworkcore.abstractions.10.0.5.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.5/microsoft.entityframeworkcore.analyzers.10.0.5.nupkg.sha512",
@@ -21,12 +23,15 @@
     "/Users/arnoldadadjisso/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.5/microsoft.extensions.logging.abstractions.10.0.5.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/microsoft.extensions.options/10.0.5/microsoft.extensions.options.10.0.5.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/microsoft.extensions.primitives/10.0.5/microsoft.extensions.primitives.10.0.5.nupkg.sha512",
-    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
-    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
-    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
-    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.abstractions/8.16.0/microsoft.identitymodel.abstractions.8.16.0.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.16.0/microsoft.identitymodel.jsonwebtokens.8.16.0.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.logging/8.16.0/microsoft.identitymodel.logging.8.16.0.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.protocols/8.0.1/microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/8.0.1/microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/microsoft.identitymodel.tokens/8.16.0/microsoft.identitymodel.tokens.8.16.0.nupkg.sha512",
     "/Users/arnoldadadjisso/.nuget/packages/npgsql/10.0.2/npgsql.10.0.2.nupkg.sha512",
-    "/Users/arnoldadadjisso/.nuget/packages/npgsql.entityframeworkcore.postgresql/10.0.1/npgsql.entityframeworkcore.postgresql.10.0.1.nupkg.sha512"
+    "/Users/arnoldadadjisso/.nuget/packages/npgsql.entityframeworkcore.postgresql/10.0.1/npgsql.entityframeworkcore.postgresql.10.0.1.nupkg.sha512",
+    "/Users/arnoldadadjisso/.nuget/packages/system.identitymodel.tokens.jwt/8.16.0/system.identitymodel.tokens.jwt.8.16.0.nupkg.sha512"
   ],
   "logs": []
 }

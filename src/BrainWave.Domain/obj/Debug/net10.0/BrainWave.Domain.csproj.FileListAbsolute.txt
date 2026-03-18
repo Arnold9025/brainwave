@@ -9,3 +9,4 @@
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/refint/BrainWave.Domain.dll
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.pdb
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/ref/BrainWave.Domain.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Domain/obj/Debug/net10.0/BrainWave.Domain.sourcelink.json

@@ -15,3 +15,4 @@
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/refint/BrainWave.Infrastructure.dll
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.pdb
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/ref/BrainWave.Infrastructure.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Infrastructure/obj/Debug/net10.0/BrainWave.Infrastructure.sourcelink.json

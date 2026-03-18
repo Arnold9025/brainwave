@@ -13,3 +13,4 @@
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/refint/BrainWave.Application.dll
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.pdb
 /Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/ref/BrainWave.Application.dll
+/Users/arnoldadadjisso/Desktop/brainwave/src/BrainWave.Application/obj/Debug/net10.0/BrainWave.Application.sourcelink.json

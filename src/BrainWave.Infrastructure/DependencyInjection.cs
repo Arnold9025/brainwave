@@ -1,4 +1,5 @@
 using BrainWave.Application.Common.Interfaces;
+using BrainWave.Infrastructure.Identity;
 using BrainWave.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,7 @@ public static class DependencyInjection
                 b => b.MigrationsAssembly(typeof(BrainWaveDbContext).Assembly.FullName)));
 
         services.AddScoped<IBrainWaveDbContext>(provider => provider.GetRequiredService<BrainWaveDbContext>());
+        services.AddScoped<IIdentityService, IdentityService>();
 
         return services;
     }

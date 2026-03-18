@@ -442,3 +442,6 @@
 /Users/arnoldadadjisso/Desktop/brainwave/tests/BrainWave.Api.IntegrationTests/obj/Debug/net10.0/BrainWave.Api.IntegrationTests.pdb
 /Users/arnoldadadjisso/Desktop/brainwave/tests/BrainWave.Api.IntegrationTests/obj/Debug/net10.0/BrainWave.Api.IntegrationTests.genruntimeconfig.cache
 /Users/arnoldadadjisso/Desktop/brainwave/tests/BrainWave.Api.IntegrationTests/obj/Debug/net10.0/ref/BrainWave.Api.IntegrationTests.dll
+/Users/arnoldadadjisso/Desktop/brainwave/tests/BrainWave.Api.IntegrationTests/bin/Debug/net10.0/BCrypt.Net-Next.dll
+/Users/arnoldadadjisso/Desktop/brainwave/tests/BrainWave.Api.IntegrationTests/bin/Debug/net10.0/Scalar.AspNetCore.dll
+/Users/arnoldadadjisso/Desktop/brainwave/tests/BrainWave.Api.IntegrationTests/obj/Debug/net10.0/BrainWave.Api.IntegrationTests.sourcelink.json
