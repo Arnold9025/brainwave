@@ -25,6 +25,7 @@ RUN dotnet publish -c Release -o /app/publish
 
 # Stage 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine AS runtime
+RUN apk add --no-cache krb5-libs icu-libs
 WORKDIR /app
 COPY --from=build /app/publish .
 

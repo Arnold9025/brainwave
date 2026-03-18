@@ -14,7 +14,7 @@ public class BrainWaveDbContext : DbContext, IBrainWaveDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(BrainWaveDbContext).Assembly);
+        // modelBuilder.ApplyConfigurationsFromAssembly(typeof(BrainWaveDbContext).Assembly);
         
         // Example configuration directly here if needed
         modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
