@@ -2,14 +2,24 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
 WORKDIR /app
 
-# Copy all .csproj files and restore dependencies
-COPY src/*/*.csproj ./src/
-RUN for file in ./src/*.csproj; do mkdir -p src/${file%.*}/ && mv $file src/${file%.*}/; done
+# Copy the solution file
 COPY BrainWave.slnx ./
+
+# Copy all .csproj files preserving directory structure for caching
+COPY src/BrainWave.Api/BrainWave.Api.csproj src/BrainWave.Api/
+COPY src/BrainWave.Application/BrainWave.Application.csproj src/BrainWave.Application/
+COPY src/BrainWave.Domain/BrainWave.Domain.csproj src/BrainWave.Domain/
+COPY src/BrainWave.Infrastructure/BrainWave.Infrastructure.csproj src/BrainWave.Infrastructure/
+COPY tests/BrainWave.Api.IntegrationTests/BrainWave.Api.IntegrationTests.csproj tests/BrainWave.Api.IntegrationTests/
+COPY tests/BrainWave.Application.UnitTests/BrainWave.Application.UnitTests.csproj tests/BrainWave.Application.UnitTests/
+
+# Restore dependencies
 RUN dotnet restore
 
-# Copy all source files
+# Copy all remaining source files
 COPY . .
+
+# Build and Publish
 WORKDIR /app/src/BrainWave.Api
 RUN dotnet publish -c Release -o /app/publish
 
