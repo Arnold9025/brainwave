@@ -1,5 +1,7 @@
 using System.Reflection;
 using BrainWave.Application.Common.Behaviors;
+using BrainWave.Application.Common.Interfaces;
+using BrainWave.Application.Services;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,8 @@ public static class DependencyInjection
         });
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        
+        services.AddScoped<ICalculateScoreService, CalculateScoreService>();
 
         return services;
     }

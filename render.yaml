@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: brainwave-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: ASPNETCORE_HTTP_PORTS
+        value: 8080
+      - key: ConnectionStrings__DefaultConnection
+        fromDatabase:
+          name: brainwave-db
+          property: connectionString
+      - key: JwtSettings__Secret
+        generateValue: true
+
+databases:
+  - name: brainwave-db
+    plan: free
+    databaseName: brainwave
+    user: brainwave_user

@@ -23,7 +23,7 @@ public class RecalculateScoreCommandHandler : IRequestHandler<RecalculateScoreCo
 
         if (user == null) return 0;
 
-        var completedTasks = user.Tasks.Count(t => t.IsCompleted);
+        var completedTasks = user.Tasks.Count(t => t.Status == "Completed");
         var totalTasks = user.Tasks.Count;
 
         user.ProductivityScore = totalTasks > 0 

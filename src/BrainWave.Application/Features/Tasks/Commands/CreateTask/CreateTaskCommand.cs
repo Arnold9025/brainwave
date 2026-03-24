@@ -6,7 +6,8 @@ public record CreateTaskCommand : IRequest<Guid>
 {
     public string Title { get; init; } = string.Empty;
     public string Description { get; init; } = string.Empty;
-    public DateTime? DueDate { get; init; }
     public int Priority { get; init; }
+    public int EstimatedDuration { get; init; }
+    public Guid? GoalId { get; init; }
     public Guid UserId { get; init; }
 }

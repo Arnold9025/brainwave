@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BrainWave.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+075fc726c4793b6e4c3d415107753a032e9418f6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd35dce95d264faa7ceda56beb9641839b1f2f4c")]
 [assembly: System.Reflection.AssemblyProductAttribute("BrainWave.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BrainWave.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,9 @@
 using BrainWave.Application.Common.Interfaces;
 using BrainWave.Infrastructure.Identity;
 using BrainWave.Infrastructure.Persistence;
+using BrainWave.Infrastructure.Services;
+using Hangfire;
+using Hangfire.PostgreSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +20,15 @@ public static class DependencyInjection
 
         services.AddScoped<IBrainWaveDbContext>(provider => provider.GetRequiredService<BrainWaveDbContext>());
         services.AddScoped<IIdentityService, IdentityService>();
+        services.AddScoped<IAIService, OpenAIService>();
+
+        services.AddHangfire(cfg => cfg
+            .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UsePostgreSqlStorage(o => o.UseNpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))));
+
+        services.AddHangfireServer();
 
         return services;
     }

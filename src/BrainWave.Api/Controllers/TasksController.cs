@@ -37,4 +37,13 @@ public class TasksController : ApiControllerBase
 
         return NoContent();
     }
+
+    [HttpPatch("{id}/complete")]
+    public async Task<ActionResult<bool>> CompleteTask(Guid id, BrainWave.Application.Features.Tasks.Commands.CompleteTask.CompleteTaskCommand command)
+    {
+        if (id != command.Id) return BadRequest();
+        var success = await Mediator.Send(command);
+        if (!success) return NotFound();
+        return Ok(success);
+    }
 }

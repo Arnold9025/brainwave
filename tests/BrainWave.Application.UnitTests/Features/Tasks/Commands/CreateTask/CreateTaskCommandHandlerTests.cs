@@ -3,6 +3,7 @@ using BrainWave.Application.Features.Tasks.Commands.CreateTask;
 using BrainWave.Domain.Entities;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
@@ -16,7 +17,8 @@ public class CreateTaskCommandHandlerTests
     public CreateTaskCommandHandlerTests()
     {
         _context = Substitute.For<IBrainWaveDbContext>();
-        _handler = new CreateTaskCommandHandler(_context);
+        var logger = Substitute.For<ILogger<CreateTaskCommandHandler>>();
+        _handler = new CreateTaskCommandHandler(_context, logger);
     }
 
     [Fact]
@@ -33,6 +35,11 @@ public class CreateTaskCommandHandlerTests
 
         var mockDbSet = Substitute.For<DbSet<TaskItem>, IQueryable<TaskItem>>();
         _context.Tasks.Returns(mockDbSet);
+
+        var mockUsersDbSet = Substitute.For<DbSet<User>>();
+        mockUsersDbSet.FindAsync(Arg.Any<object[]>(), Arg.Any<CancellationToken>())
+            .Returns(new User { Id = command.UserId, Username = "TestUser", Email = "test@example.com" });
+        _context.Users.Returns(mockUsersDbSet);
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);

@@ -11,5 +11,7 @@ public class User : Entity
     
     // Relationships
     public ICollection<TaskItem> Tasks { get; set; } = new List<TaskItem>();
-    public ICollection<Objective> Objectives { get; set; } = new List<Objective>();
+    public ICollection<Goal> Goals { get; set; } = new List<Goal>();
+    public ICollection<ProductivityLog> ProductivityLogs { get; set; } = new List<ProductivityLog>();
+    public ICollection<AISuggestion> AISuggestions { get; set; } = new List<AISuggestion>();
 }

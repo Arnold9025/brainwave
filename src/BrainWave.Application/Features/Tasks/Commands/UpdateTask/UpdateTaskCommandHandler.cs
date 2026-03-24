@@ -22,9 +22,11 @@ public class UpdateTaskCommandHandler : IRequestHandler<UpdateTaskCommand, bool>
 
         entity.Title = request.Title;
         entity.Description = request.Description;
-        entity.DueDate = request.DueDate;
-        entity.IsCompleted = request.IsCompleted;
         entity.Priority = request.Priority;
+        entity.EstimatedDuration = request.EstimatedDuration;
+        entity.ScheduledAt = request.ScheduledAt;
+        entity.GoalId = request.GoalId;
+        entity.Status = request.Status;
 
         await _context.SaveChangesAsync(cancellationToken);
 

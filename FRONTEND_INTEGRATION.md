@@ -1,91 +1,109 @@
 # 🌐 Guide d'Intégration Frontend - BrainWave API
 
-Ce guide récapitule comment consommer l'API BrainWave depuis une application frontend (React, Vue, Next.js, etc.).
+Ce guide récapitule comment consommer l'API BrainWave depuis une application frontend (Flutter, React, etc.).
 
 ---
 
 ## 📍 Configuration de base
 
-**Base URL (Production) :** `https://votre-app.onrender.com/api`  
+**Base URL (Production) :** `https://brainwave-x6kn.onrender.com`  
 **Base URL (Local) :** `http://localhost:5200/api`
 
 ---
 
-## 🛠️ Endpoints Principaux
+## 🔐 1. Authentification (`/auth`)
 
-### 1. Gestion des Tâches (`/tasks`)
+L'API utilise des **JWT (JSON Web Tokens)** pour sécuriser les accès.
+
+| Action | Méthode | Endpoint | Body (JSON) | Retour |
+| :--- | :--- | :--- | :--- | :--- |
+| Inscription | `POST` | `/auth/register` | `{ "username", "email", "password" }` | `{ "token" }` |
+| Connexion | `POST` | `/auth/login` | `{ "email", "password" }` | `{ "token" }` |
+
+**Important :** Tous les autres endpoints nécessitent le header :  
+`Authorization: Bearer <votre_token>`
+
+---
+
+## 🛠️ 2. Endpoints Principaux (Protégés)
 
 | Action | Méthode | Endpoint | Body (JSON) |
 | :--- | :--- | :--- | :--- |
-| Lister | `GET` | `/tasks?userId={uuid}` | - |
-| Créer | `POST` | `/tasks` | `{ "title", "description", "priority", "userId", "dueDate" }` |
-| Modifier | `PUT` | `/tasks/{id}` | `{ "id", "title", "description", "priority", "isCompleted" }` |
-| Supprimer | `DELETE` | `/tasks/{id}` | - |
+| Lister Tâches | `GET` | `/tasks` | - |
+| Créer Tâche | `POST` | `/tasks` | `{ "title", "description", "priority", "dueDate" }` |
+| Modifier Tâche | `PUT` | `/tasks/{id}` | `{ "id", "title", "description", "priority", "isCompleted" }` |
+| Voir Score | `GET` | `/scoring/{userId}` | - |
 
-**Exemple de création (JavaScript) :**
-```javascript
-const createTask = async (taskData) => {
-  const response = await fetch(`${API_URL}/tasks`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(taskData)
-  });
-  return await response.json(); // Retourne l'ID de la tâche créée
-};
+---
+
+## 💙 3. Intégration Flutter (Exemple)
+
+Voici comment structurer vos appels API en Flutter avec le package `http`.
+
+### A. Service d'Authentification
+
+```dart
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+class AuthService {
+  final String baseUrl = "http://localhost:5200/api/auth"; // Changez pour l'URL de prod si besoin
+  final storage = const FlutterSecureStorage();
+
+  Future<String?> login(String email, String password) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/login'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'email': email, 'password': password}),
+    );
+
+    if (response.statusCode == 200) {
+      final token = jsonDecode(response.body)['token'];
+      await storage.write(key: 'jwt', value: token); // Stockage sécurisé
+      return token;
+    }
+    return null;
+  }
+}
 ```
 
-### 2. Gestion des Objectifs (`/objectives`)
+### B. Faire une requête authentifiée
 
-| Action | Méthode | Endpoint | Body (JSON) |
-| :--- | :--- | :--- | :--- |
-| Lister | `GET` | `/objectives?userId={uuid}` | - |
-| Créer | `POST` | `/objectives` | `{ "title", "description", "deadline", "userId" }` |
-
-### 3. Score & Recommendations
-
-| Action | Méthode | Endpoint | Description |
-| :--- | :--- | :--- | :--- |
-| Voir le score | `GET` | `/scoring/{userId}` | Récupère le Productivity Score actuel. |
-| Recalculer | `POST` | `/scoring/{userId}/recalculate` | Force la mise à jour du score. |
-| Suggestions | `GET` | `/recommendations/{userId}` | Retourne des tâches suggérées. |
-
----
-
-## 👤 Gestion de l'Utilisateur
-
-**Important :** Pour le moment, l'API utilise une stratégie de **"Auto-User Creation"**.
-- Vous pouvez envoyer n'importe quel `Guid` (UUID v4) comme `userId`.
-- Si l'utilisateur n'existe pas en base, l'API le créera automatiquement lors de la première action (création de tâche/objectif).
-
-**Format du UserId :** `3fa85f64-5717-4562-b3fc-2c963f66afa6` (Exemple)
-
----
-
-## 🚀 Exemple Complet (React + Axios)
-
-```javascript
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: 'https://votre-app.onrender.com/api'
-});
-
-// Récupérer les tâches et le score
-export const getUserDashboard = async (userId) => {
-  const [tasks, score] = await Promise.all([
-    api.get(`/tasks?userId=${userId}`),
-    api.get(`/scoring/${userId}`)
-  ]);
+```dart
+Future<void> fetchTasks() async {
+  final token = await storage.read(key: 'jwt'); // Récupération du token stocké
   
-  return {
-    tasks: tasks.data,
-    productivityScore: score.data.score
-  };
-};
+  final response = await http.get(
+    Uri.parse('http://localhost:5200/api/tasks'),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token', // JWT Header indispensable
+    },
+  );
+
+  if (response.statusCode == 200) {
+    // Parser les données JSON ici...
+    print(response.body);
+  } else if (response.statusCode == 401) {
+    print("Session expirée ou non autorisée");
+  }
+}
 ```
 
 ---
 
-## 🔒 Notes sur la sécurité (CORS)
+## 🚀 4. Tests Rapides
 
-L'API est configurée pour accepter les requêtes de n'importe quelle origine (`AllowAnyOrigin`). Vous ne devriez pas rencontrer d'erreurs CORS lors de vos tests.
+1.  **Enregistrez un utilisateur** via `/api/auth/register`.
+2.  **Récupérez le token** via `/api/auth/login`.
+3.  **Testez un accès** :
+    ```bash
+    curl -H "Authorization: Bearer <token>" http://localhost:5200/api/tasks
+    ```
+
+---
+
+## 🔒 Notes sur la sécurité
+- **Stockage** : En Flutter, utilisez `flutter_secure_storage` au lieu de `shared_preferences` pour les tokens JWT afin de les chiffrer sur l'appareil.
+- **Intercepteurs** : Pour des applications plus complexes, utilisez le package `dio` avec des intercepteurs pour ajouter automatiquement le token à chaque requête.

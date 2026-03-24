@@ -22,7 +22,40 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BrainWave.Domain.Entities.Objective", b =>
+            modelBuilder.Entity("BrainWave.Domain.Entities.AISuggestion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AISuggestions");
+                });
+
+            modelBuilder.Entity("BrainWave.Domain.Entities.Goal", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,8 +71,12 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("boolean");
+                    b.Property<int>("Priority")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -55,7 +92,41 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Objectives");
+                    b.ToTable("Goals");
+                });
+
+            modelBuilder.Entity("BrainWave.Domain.Entities.ProductivityLog", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("CompletedTasks")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("FocusTime")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("Score")
+                        .HasColumnType("double precision");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductivityLogs");
                 });
 
             modelBuilder.Entity("BrainWave.Domain.Entities.TaskItem", b =>
@@ -64,6 +135,9 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -71,17 +145,21 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("DueDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("EstimatedDuration")
+                        .HasColumnType("integer");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid?>("ObjectiveId")
+                    b.Property<Guid?>("GoalId")
                         .HasColumnType("uuid");
 
                     b.Property<int>("Priority")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime?>("ScheduledAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -95,7 +173,7 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ObjectiveId");
+                    b.HasIndex("GoalId");
 
                     b.HasIndex("UserId");
 
@@ -137,10 +215,32 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BrainWave.Domain.Entities.Objective", b =>
+            modelBuilder.Entity("BrainWave.Domain.Entities.AISuggestion", b =>
                 {
                     b.HasOne("BrainWave.Domain.Entities.User", "User")
-                        .WithMany("Objectives")
+                        .WithMany("AISuggestions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BrainWave.Domain.Entities.Goal", b =>
+                {
+                    b.HasOne("BrainWave.Domain.Entities.User", "User")
+                        .WithMany("Goals")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BrainWave.Domain.Entities.ProductivityLog", b =>
+                {
+                    b.HasOne("BrainWave.Domain.Entities.User", "User")
+                        .WithMany("ProductivityLogs")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -150,9 +250,10 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("BrainWave.Domain.Entities.TaskItem", b =>
                 {
-                    b.HasOne("BrainWave.Domain.Entities.Objective", "Objective")
+                    b.HasOne("BrainWave.Domain.Entities.Goal", "Goal")
                         .WithMany("Tasks")
-                        .HasForeignKey("ObjectiveId");
+                        .HasForeignKey("GoalId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BrainWave.Domain.Entities.User", "User")
                         .WithMany("Tasks")
@@ -160,19 +261,23 @@ namespace BrainWave.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Objective");
+                    b.Navigation("Goal");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BrainWave.Domain.Entities.Objective", b =>
+            modelBuilder.Entity("BrainWave.Domain.Entities.Goal", b =>
                 {
                     b.Navigation("Tasks");
                 });
 
             modelBuilder.Entity("BrainWave.Domain.Entities.User", b =>
                 {
-                    b.Navigation("Objectives");
+                    b.Navigation("AISuggestions");
+
+                    b.Navigation("Goals");
+
+                    b.Navigation("ProductivityLogs");
 
                     b.Navigation("Tasks");
                 });

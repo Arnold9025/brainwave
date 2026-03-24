@@ -25,7 +25,7 @@ public class GetRecommendationsQueryHandler : IRequestHandler<GetRecommendations
 
         if (user == null) return recommendations;
 
-        var pendingHighPriority = user.Tasks.Count(t => !t.IsCompleted && t.Priority == 3);
+        var pendingHighPriority = user.Tasks.Count(t => t.Status != "Completed" && t.Priority == 3);
         if (pendingHighPriority > 0)
         {
             recommendations.Add($"Tu as {pendingHighPriority} tâches prioritaires en attente. Concentre-toi dessus !");

@@ -22,9 +22,11 @@ public class GetTasksQueryHandler : IRequestHandler<GetTasksQuery, List<TaskDto>
                 Id = t.Id,
                 Title = t.Title,
                 Description = t.Description,
-                DueDate = t.DueDate,
-                IsCompleted = t.IsCompleted,
-                Priority = t.Priority
+                Status = t.Status,
+                ScheduledAt = t.ScheduledAt,
+                CompletedAt = t.CompletedAt,
+                Priority = t.Priority,
+                EstimatedDuration = t.EstimatedDuration
             })
             .ToListAsync(cancellationToken);
     }

@@ -40,8 +40,9 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, Guid>
         {
             Title = request.Title,
             Description = request.Description,
-            DueDate = request.DueDate,
             Priority = request.Priority,
+            EstimatedDuration = request.EstimatedDuration,
+            GoalId = request.GoalId,
             UserId = request.UserId
         };
 
