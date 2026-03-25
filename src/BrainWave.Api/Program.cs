@@ -58,6 +58,7 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<BrainWave.Infrastructure.Persistence.BrainWaveDbContext>();
     await Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.MigrateAsync(context.Database);
+    await BrainWave.Infrastructure.Persistence.DatabaseSeeder.SeedAsync(context);
 }
 
 // Configure the HTTP request pipeline.
